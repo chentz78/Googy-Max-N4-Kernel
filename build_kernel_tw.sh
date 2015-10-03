@@ -11,8 +11,8 @@ export KERNELDIR=`readlink -f .`
 export PARENT_DIR=`readlink -f ..`
 export USE_SEC_FIPS_MODE=true
 
-cp -f $BASE_DIR/$KBASE_NM/Kernel/arch/arm/configs/0googymax_exynos5433-trelte_defconfig $BASE_DIR/$KBASE_NM/0googymax_exynos5433-trelte_defconfig
-sed "s#^CONFIG_LOCALVERSION=.*#CONFIG_LOCALVERSION=$VER#" $BASE_DIR/$KBASE_NM/0googymax_exynos5433-trelte_defconfig > $BASE_DIR/$KBASE_NM/Kernel/arch/arm/configs/0googymax_exynos5433-trelte_defconfig
+cp -f $BASE_DIR/$KBASE_NM/arch/arm/configs/0googymax_exynos5433-trelte_defconfig $BASE_DIR/$KBASE_NM/0googymax_exynos5433-trelte_defconfig
+sed "s#^CONFIG_LOCALVERSION=.*#CONFIG_LOCALVERSION=$VER#" $BASE_DIR/$KBASE_NM/0googymax_exynos5433-trelte_defconfig > $BASE_DIR/$KBASE_NM/arch/arm/configs/0googymax_exynos5433-trelte_defconfig
 
 export KCONFIG_NOTIMESTAMP=true
 export ARCH=arm
