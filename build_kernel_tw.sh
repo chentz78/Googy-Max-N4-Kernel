@@ -1,15 +1,18 @@
-#!/bin/sh
+#!/bin/bash
+BASE_DIR=/home/android/Dev
+KBASE_NM=Googy-Max-N4-Kernel
+
+export CROSS_COMPILE=/usr/lib/linaro/toolchain-a15/arm-cortex_a15-linux-gnueabihf-linaro_4.9.4-2015.06/bin/arm-linux-gnueabihf-
+RAMFS_TMP="$BASE_DIR/$KBASE_NM/Ramdisk_tmp/tmp"
+VER="\"-$KBASE_NM-v$1\""
+export RAMFS_SOURCE="$BASE_DIR/$KBASE_NM/Ramdisk"
+
 export KERNELDIR=`readlink -f .`
-export RAMFS_SOURCE="/home/googy/Kernel/Googy-Max-N4/Ramdisk"
 export PARENT_DIR=`readlink -f ..`
 export USE_SEC_FIPS_MODE=true
-export CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf-
 
-RAMFS_TMP="/home/googy/Kernel/Googy-Max-N4/Ramdisk_tmp/tmp"
-
-VER="\"-Googy-Max-N4-v$1\""
-cp -f /home/googy/Kernel/Googy-Max-N4/Kernel/arch/arm/configs/0googymax_exynos5433-trelte_defconfig /home/googy/Kernel/Googy-Max-N4/0googymax_exynos5433-trelte_defconfig
-sed "s#^CONFIG_LOCALVERSION=.*#CONFIG_LOCALVERSION=$VER#" /home/googy/Kernel/Googy-Max-N4/0googymax_exynos5433-trelte_defconfig > /home/googy/Kernel/Googy-Max-N4/Kernel/arch/arm/configs/0googymax_exynos5433-trelte_defconfig
+cp -f $BASE_DIR/$KBASE_NM/Kernel/arch/arm/configs/0googymax_exynos5433-trelte_defconfig $BASE_DIR/$KBASE_NM/0googymax_exynos5433-trelte_defconfig
+sed "s#^CONFIG_LOCALVERSION=.*#CONFIG_LOCALVERSION=$VER#" $BASE_DIR/$KBASE_NM/0googymax_exynos5433-trelte_defconfig > $BASE_DIR/$KBASE_NM/Kernel/arch/arm/configs/0googymax_exynos5433-trelte_defconfig
 
 export KCONFIG_NOTIMESTAMP=true
 export ARCH=arm
